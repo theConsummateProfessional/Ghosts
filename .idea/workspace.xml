@@ -4,7 +4,6 @@
     <list default="true" id="d7268cf9-6fd2-470e-afa2-491e6ef232db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useKeyPress.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Game.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +44,8 @@
       <workItem from="1666065387497" duration="284000" />
       <workItem from="1666065711040" duration="2500000" />
       <workItem from="1666137097854" duration="10827000" />
+      <workItem from="1666219120605" duration="9677000" />
+      <workItem from="1666325490759" duration="8937000" />
     </task>
     <servers />
   </component>
