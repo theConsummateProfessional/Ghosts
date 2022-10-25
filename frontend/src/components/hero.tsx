@@ -3,13 +3,12 @@ import React from 'react';
 import {useState, useEffect, useRef} from 'react';
 
 import {KeyboardDirection} from "../utils/common/enums";
+import {controlFrames} from "../utils/common/frames";
 
 export default function Hero(props: any) {
     //constants
     const MOVE_PX = 10;
-    const FRAMERATE = 20;
-    const COUNT_MAX = 100;
-    const COUNT_MIN = 0;
+    const FRAMERATE = 15;
 
     //References
     const heroRef = useRef(null);
@@ -23,20 +22,9 @@ export default function Hero(props: any) {
 
     //Effects
     useEffect(() => {
-        const hero: any = heroRef.current;
-
-        const timer = setTimeout(() => {
-            setCount(count + 1);
-            if(count > COUNT_MAX) {
-                setCount(COUNT_MIN);
-            }
-        }, FRAMERATE);
+        const timer = controlFrames(FRAMERATE, count, setCount);
 
         let keyDict: any = props.keyInput;
-       // console.log(keyDict)
-        if(inKeyDict(keyDict, KeyboardDirection.Up.key, KeyboardDirection.Up.arrow)) {
-            console.log("check")
-        }
 
         //Up and down controls
         if(inKeyDict(keyDict, KeyboardDirection.Up.key, KeyboardDirection.Up.arrow) && inKeyDict(keyDict, KeyboardDirection.Down.key, KeyboardDirection.Down.arrow)) {
