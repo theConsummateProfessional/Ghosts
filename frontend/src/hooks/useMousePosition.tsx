@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 
-const useMousePosition = () => {
+export const useMousePosition = () => {
     const [mousePos, setMousePos] = useState<any>({x: null, y: null});
 
     const updateMousePosition = (e: any) => {
         if(e.which == 1) {
-            setMousePos({x: e.pageX, y: e.pageY});
+            setMousePos({mouseX: e.pageX, mouseY: e.pageY});
+        } else {
+            setMousePos({mouseX: null, mouseY: null});
         }
     };
 
@@ -17,5 +19,3 @@ const useMousePosition = () => {
 
     return mousePos;
 };
-
-export default useMousePosition;
