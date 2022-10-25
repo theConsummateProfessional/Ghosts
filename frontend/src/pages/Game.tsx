@@ -6,6 +6,9 @@ import Hero from '../components/hero';
 let map: any = {};
 
 export default function Game(props: any) {
+    const GAME_LIMIT_X = props.width / 2;
+    const GAME_LIMIT_Y = props.height / 2;
+
     const [key, setKey] = useState<any>({});
 
     const keyDownHandler = (event: any) => {
@@ -14,8 +17,6 @@ export default function Game(props: any) {
     }
     const keyUpHandler = (event: any) => {
         delete map[event.key];
-        console.log(event.key);
-        console.log(map)
         setKey(map);
     }
 
@@ -36,7 +37,7 @@ export default function Game(props: any) {
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
-                    <Hero keyInput={key}/>
+                    <Hero keyInput={key} moveLimitX={GAME_LIMIT_X} moveLimitY={GAME_LIMIT_Y}/>
                 </div>
             </div>
         </>

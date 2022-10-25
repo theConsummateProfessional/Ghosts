@@ -29,10 +29,10 @@ export default function Hero(props: any) {
         //Up and down controls
         if(inKeyDict(keyDict, KeyboardDirection.Up.key, KeyboardDirection.Up.arrow) && inKeyDict(keyDict, KeyboardDirection.Down.key, KeyboardDirection.Down.arrow)) {
             //Does nothing
-        }else if (inKeyDict(keyDict, KeyboardDirection.Up.key, KeyboardDirection.Up.arrow)) {
+        }else if (inKeyDict(keyDict, KeyboardDirection.Up.key, KeyboardDirection.Up.arrow) && (moveUp < props.moveLimitY)) {
             setMoveUp(moveUp + MOVE_PX);
             setMoveDown(moveDown - MOVE_PX);
-        }else if (inKeyDict(keyDict, KeyboardDirection.Down.key, KeyboardDirection.Down.arrow)) {
+        }else if (inKeyDict(keyDict, KeyboardDirection.Down.key, KeyboardDirection.Down.arrow) && (moveDown < props.moveLimitY)) {
             setMoveDown(moveDown + MOVE_PX);
             setMoveUp(moveUp - MOVE_PX);
         }
@@ -40,10 +40,10 @@ export default function Hero(props: any) {
         //Left and right controls
         if(inKeyDict(keyDict, KeyboardDirection.Left.key, KeyboardDirection.Left.arrow) && inKeyDict(keyDict, KeyboardDirection.Right.key, KeyboardDirection.Right.arrow)) {
             //Does nothing
-        }else if(inKeyDict(keyDict, KeyboardDirection.Left.key, KeyboardDirection.Left.arrow)) {
+        }else if(inKeyDict(keyDict, KeyboardDirection.Left.key, KeyboardDirection.Left.arrow) && (moveLeft < props.moveLimitX)) {
             setMoveLeft(moveLeft + MOVE_PX);
             setMoveRight(moveRight - MOVE_PX);
-        }else if(inKeyDict(keyDict, KeyboardDirection.Right.key, KeyboardDirection.Right.arrow)) {
+        }else if(inKeyDict(keyDict, KeyboardDirection.Right.key, KeyboardDirection.Right.arrow) && (moveRight < props.moveLimitX)) {
             setMoveRight(moveRight + MOVE_PX);
             setMoveLeft(moveLeft - MOVE_PX);
         }
