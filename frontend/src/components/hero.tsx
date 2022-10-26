@@ -11,6 +11,9 @@ export default function Hero(props: any) {
     //constants
     const MOVE_PX = 10;
     const FRAMERATE = 15;
+    const HERO_DIMS = 25 // only going with one for right now since it is a ball
+    const LAZER_OFFSET = HERO_DIMS / 2;
+    const ROTATION_OFFSET = 90;
 
     //References
     const heroRef = useRef(document.createElement("div"));
@@ -24,9 +27,11 @@ export default function Hero(props: any) {
 
     //Mouse and lazer state
     const {mouseX, mouseY} = useMousePosition();
-    const clicked = mouseX ? true : false;
+    const [clicked, setClicked] = useState(false);
     const [lazerDistance, setLazerDistance] = useState(0);
     const [lazerOrientation, setLazerOrientation] = useState(0);
+    const [lazerX, setLazerX] = useState(0);
+    const [lazerY, setLazerY] = useState(0);
 
     //Effects
     useEffect(() => {
@@ -56,17 +61,22 @@ export default function Hero(props: any) {
             setMoveLeft(moveLeft - MOVE_PX);
         }
 
-        return () => clearTimeout(timer);
+        return () => clearTimeout(timer); // eslint-disable-next-line
     }, [count])
 
+    // eslint-disable-next-line
     useEffect(() => {
-        // console.log(heroRef.current.offsetLeft)
         const x = heroRef.current.offsetLeft;
         const y = heroRef.current.offsetTop;
 
         if(mouseX) {
+            setClicked(true);
             setLazerDistance(getDistance(x, y, mouseX, mouseY));
-            setLazerOrientation(-1*getOrientation(x, y, mouseX, mouseY));
+            setLazerOrientation(getOrientation(x, y, mouseX, mouseY) - ROTATION_OFFSET);
+            setLazerX(x + LAZER_OFFSET);
+            setLazerY(y + LAZER_OFFSET);
+        } else {
+            setClicked(false);
         }
     })
 
@@ -89,8 +99,8 @@ export default function Hero(props: any) {
     return (
         <>
             <div id="hero" style={{
-                width: '25px',
-                height: '25px',
+                width: HERO_DIMS + 'px',
+                height: HERO_DIMS + 'px',
                 backgroundColor: 'black',
                 borderRadius: '50%',
                 marginTop: moveDown + 'px',
@@ -98,7 +108,7 @@ export default function Hero(props: any) {
                 marginRight: moveLeft + 'px',
                 marginLeft: moveRight + 'px'
             }} ref={heroRef}></div>
-            {clicked ? <Lazer distance={lazerDistance} orientation={lazerOrientation}></Lazer>: null}
+            {clicked ? <Lazer distance={lazerDistance} orientation={lazerOrientation} x={lazerX} y={lazerY}></Lazer>: null}
         </>
     )
 }
