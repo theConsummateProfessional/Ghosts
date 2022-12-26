@@ -1,0 +1,36 @@
+{
+  "enemy": [
+    {
+      "type": "grunt",
+      "health": 20,
+      "damageDealt": 5,
+      "movementSpeed": 15
+    },
+    {
+      "type": "poltergeist",
+      "health": 30,
+      "damageDealt": 10,
+      "movementSpeed": 20
+    },
+    {
+      "type": "demon",
+      "health": 40,
+      "damageDealt": 20,
+      "movementSpeed": 25
+    },
+    {
+      "type": "zombie",
+      "health": 25,
+      "damageDealt": 15,
+      "movementSpeed": 5
+    }
+  ],
+  "hero": [
+    {
+      "type": "hero",
+      "heatlh": 50,
+      "damageDealt": 5,
+      "movementSpeed": 15
+    }
+  ]
+}

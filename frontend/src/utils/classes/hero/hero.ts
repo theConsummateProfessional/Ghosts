@@ -8,7 +8,7 @@ class Hero implements Entity {
 
     constructor() {
         this.type = "Hero";
-        this.health = 20;
+        this.health = 50;
         this.damageDealt = 5;
         this.movementSpeed = 10;
     }
