@@ -1,5 +1,13 @@
 import React from 'react';
 
+/*
+* Lazer component to take coordinates and output a lazer
+* @prop x {number} the number of the x coordinate of the start of the lazer
+* @prop y {number} the number of the y coordinate of the start of the lazer
+* @prop distance {number} the number of the distance between the two points
+* @prop orientation {number} the number of the orientation between the two points
+* @return the lazer component
+*/
 export default function Lazer(props: any) {
 
     return (

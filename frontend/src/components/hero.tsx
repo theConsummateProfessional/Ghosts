@@ -7,6 +7,13 @@ import {useMousePosition} from "../hooks/useMousePosition"
 import {KeyboardDirection} from "../utils/common/enums";
 import {controlFrames} from "../utils/common/frames";
 
+/*
+ * Returns position of hero
+ * @prop keyInput {string} the character of the key being input
+ * @prop moveLimitY {number} the limit on how much the hero can move vertically
+ * @prop moveLimitX {number} the limit on how much the hero can move horizontally
+ * @return Hero {Component}
+*/
 export default function Hero(props: any) {
     //constants
     const MOVE_PX = 10;
@@ -34,6 +41,10 @@ export default function Hero(props: any) {
     const [lazerY, setLazerY] = useState(0);
 
     //Effects
+    /*
+    * Movement Effect
+    * @dep count {number} the count dependency that keeps control of framerame
+    */
     useEffect(() => {
         const timer = controlFrames(FRAMERATE, count, setCount);
 
@@ -65,6 +76,9 @@ export default function Hero(props: any) {
     }, [count])
 
     // eslint-disable-next-line
+    /*
+    * Lazer Effect
+    */
     useEffect(() => {
         const x = heroRef.current.offsetLeft;
         const y = heroRef.current.offsetTop;
@@ -81,10 +95,25 @@ export default function Hero(props: any) {
     })
 
     //scope functions
+    /*
+    * Returns a boolean based on whether it is an arrow or alpha key
+    * @param keyDict {any: dictionary} dictionary of key passed in
+    * @param key {string} the key that is being pressed
+    * @param arrow {string} the arrow that is being pressed
+    * @return or {boolean} whether arrow or key in dictionary passed in
+    */
     function inKeyDict(keyDict: any, key: string, arrow: string) {
         return keyDict[key] || keyDict[arrow];
     }
 
+    /*
+    * Function to get distanced between two points
+    * @param x1 {number} first x coordinate
+    * @param y1 {number} first y coordinate
+    * @param x2 {number} second x coordinate
+    * @param y2 {number} second y coordinate
+    * @return --- the distance between two points
+    */
     function getDistance(x1: number, y1: number, x2: number, y2: number) {
         let xDiff: number = x1 - x2;
         let yDiff: number = y1 - y2;
@@ -92,6 +121,14 @@ export default function Hero(props: any) {
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
 
+    /*
+     * Function to get distanced between two points
+     * @param x1 {number} first x coordinate
+     * @param y1 {number} first y coordinate
+     * @param x2 {number} second x coordinate
+     * @param y2 {number} second y coordinate
+     * @return --- the orientation of line between two points
+     */
     function getOrientation(x1: number, y1: number, x2: number, y2: number) {
         return Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
     }

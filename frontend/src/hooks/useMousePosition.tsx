@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 
+/*
+* useMousePosition effect, returns mousepos when clicked
+* @return {object} returns x and y of current location of clicked mouse
+*/
 export const useMousePosition = () => {
     const [mousePos, setMousePos] = useState<any>({x: null, y: null});
 
